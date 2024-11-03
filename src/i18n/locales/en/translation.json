@@ -1,47 +1,52 @@
 {
   "home": {
     "community": {
-      "features": {
-        "cards": {
-          "1": {
-            "description": "Carefully designed homes arranged to create natural community interactions while ensuring privacy",
-            "title": "12 Thoughtful Homes"
-          },
-          "2": {
-            "description": "Donating 40 acres of land to maintain the existing mature trail system and natural beauty",
-            "title": "40 Acres Preserved"
-          },
-          "3": {
-            "description": "A shared space for family gatherings, events, and fostering a sense of community",
-            "title": "Community Center"
-          },
-          "4": {
-            "description": "Preserving and enhancing the existing trail system for walking, dog walking, and nature enjoyment",
-            "title": "Community Trails"
-          },
-          "5": {
-            "description": "Perfect for retirees, first-time homeowners, and those seeking a connected lifestyle",
-            "title": "Diverse Community"
-          },
-          "6": {
-            "description": "Offering a unique alternative to dense city living with a focus on nature and community",
-            "title": "Quality of Life"
-          }
-        },
-        "title": "Community Features"
-      },
-      "neighborhood": {
-        "description": "willows circle arranges homes around shared green spaces, creating natural opportunities for neighborly connections while maintaining private spaces. This thoughtful design promotes a balance of community engagement and personal retreat.",
-        "title": "A Pocket Neighborhood Design"
-      },
       "vision": {
         "description": "12 thoughtfully designed homes on 1 acre, preserving 40 acres of natural beauty for the community.",
         "title": "A New Vision for Community Living in Saint-Lazare"
       }
     },
+    "email": {
+      "title": "Enter your email"
+    },
+    "features": {
+      "cards": {
+        "1": {
+          "description": "Carefully designed homes arranged to create natural community interactions while ensuring privacy",
+          "title": "12 Thoughtful Homes"
+        },
+        "2": {
+          "description": "Donating 40 acres of land to maintain the existing mature trail system and natural beauty",
+          "title": "40 Acres Preserved"
+        },
+        "3": {
+          "description": "A shared space for family gatherings, events, and fostering a sense of community",
+          "title": "Community Center"
+        },
+        "4": {
+          "description": "Preserving and enhancing the existing trail system for walking, dog walking, and nature enjoyment",
+          "title": "Community Trails"
+        },
+        "5": {
+          "description": "Perfect for retirees, first-time homeowners, and those seeking a connected lifestyle",
+          "title": "Diverse Community"
+        },
+        "6": {
+          "description": "Offering a unique alternative to dense city living with a focus on nature and community",
+          "title": "Quality of Life"
+        }
+      },
+      "title": "Community Features"
+    },
+    "neighborhood": {
+      "description": "willows circle arranges homes around shared green spaces, creating natural opportunities for neighborly connections while maintaining private spaces. This thoughtful design promotes a balance of community engagement and personal retreat.",
+      "title": "A Pocket Neighborhood Design"
+    },
     "support": {
       "button": "I Support This Project",
       "description": "We believe willows circle will benefit our community by providing innovative housing solutions while preserving natural spaces. Show your support and stay updated on our progress:",
+      "exists": "Thank-you,",
+      "thankyou": "Thank-you for your support,",
       "title": "Support Our Vision"
     }
   },

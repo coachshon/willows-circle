@@ -87,3 +87,6 @@ jobs:
           service: ${{ env.SERVICE_NAME }}
           region: ${{ env.RUN_REGION }}
           source: ./
+          env_vars: |
+            GRIST_API_URL=${{ secrets.GRIST_API_URL }}
+            GRIST_AUTH_TOKEN=${{ secrets.GRIST_AUTH_TOKEN }}

@@ -1,3 +1,4 @@
+"use client";
 // Dynamically import SignIn component and disable SSR
 import dynamic from "next/dynamic";
 const WillowsCircleLanding = dynamic(

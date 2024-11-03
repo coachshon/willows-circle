@@ -1,5 +1,8 @@
 "use client";
 
+import { useActionState } from "react";
+import { useFormStatus } from "react-dom";
+import { createUser } from "@/actions/createUser";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Home, Trees, Users, Footprints, Building, Heart } from "lucide-react";
@@ -20,6 +23,19 @@ function SketchEffect({ children }: { children: React.ReactNode }) {
 export function WillowsCircleLanding() {
   // 🌍 translations
   const { t } = useTranslation("translation");
+
+  function SubmitButton() {
+    const { pending } = useFormStatus();
+    return (
+      <Button type="submit" aria-disabled={pending}>
+        {t("home.support.button")}
+      </Button>
+    );
+  }
+  const initialState = {
+    message: "",
+  };
+  const [state, formAction] = useActionState(createUser, initialState);
   return (
     <div className="min-h-screen bg-background text-foreground">
       <header className="bg-primary text-primary-foreground py-6">
@@ -43,11 +59,9 @@ export function WillowsCircleLanding() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
             <div>
               <h3 className="text-2xl font-semibold mb-4">
-                {t("home.community.neighborhood.title")}
+                {t("home.neighborhood.title")}
               </h3>
-              <p className="mb-4">
-                {t("home.community.neighborhood.description")}
-              </p>
+              <p className="mb-4">{t("home.neighborhood.description")}</p>
             </div>
             <SketchEffect>
               <div className="relative h-[300px] md:h-[400px]">
@@ -64,73 +78,61 @@ export function WillowsCircleLanding() {
 
         <section className="mb-12">
           <h3 className="text-2xl font-semibold mb-6">
-            {t("home.community.features.title")}
+            {t("home.features.title")}
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             <Card>
               <CardHeader>
                 <Home className="w-8 h-8 mb-2 text-primary" />
-                <CardTitle>
-                  {t("home.community.features.cards.1.title")}
-                </CardTitle>
+                <CardTitle>{t("home.features.cards.1.title")}</CardTitle>
               </CardHeader>
               <CardContent>
-                <p>{t("home.community.features.cards.1.description")}</p>
+                <p>{t("home.features.cards.1.description")}</p>
               </CardContent>
             </Card>
             <Card>
               <CardHeader>
                 <Trees className="w-8 h-8 mb-2 text-primary" />
-                <CardTitle>
-                  {t("home.community.features.cards.2.title")}
-                </CardTitle>
+                <CardTitle>{t("home.features.cards.2.title")}</CardTitle>
               </CardHeader>
               <CardContent>
-                <p>{t("home.community.features.cards.2.description")}</p>
+                <p>{t("home.features.cards.2.description")}</p>
               </CardContent>
             </Card>
             <Card>
               <CardHeader>
                 <Building className="w-8 h-8 mb-2 text-primary" />
-                <CardTitle>
-                  {t("home.community.features.cards.3.title")}
-                </CardTitle>
+                <CardTitle>{t("home.features.cards.3.title")}</CardTitle>
               </CardHeader>
               <CardContent>
-                <p>{t("home.community.features.cards.3.description")}</p>
+                <p>{t("home.features.cards.3.description")}</p>
               </CardContent>
             </Card>
             <Card>
               <CardHeader>
                 <Footprints className="w-8 h-8 mb-2 text-primary" />
-                <CardTitle>
-                  {t("home.community.features.cards.4.title")}
-                </CardTitle>
+                <CardTitle>{t("home.features.cards.4.title")}</CardTitle>
               </CardHeader>
               <CardContent>
-                <p>{t("home.community.features.cards.4.description")}</p>
+                <p>{t("home.features.cards.4.description")}</p>
               </CardContent>
             </Card>
             <Card>
               <CardHeader>
                 <Users className="w-8 h-8 mb-2 text-primary" />
-                <CardTitle>
-                  {t("home.community.features.cards.5.title")}
-                </CardTitle>
+                <CardTitle>{t("home.features.cards.5.title")}</CardTitle>
               </CardHeader>
               <CardContent>
-                <p>{t("home.community.features.cards.5.description")}</p>
+                <p>{t("home.features.cards.5.description")}</p>
               </CardContent>
             </Card>
             <Card>
               <CardHeader>
                 <Heart className="w-8 h-8 mb-2 text-primary" />
-                <CardTitle>
-                  {t("home.community.features.cards.6.title")}
-                </CardTitle>
+                <CardTitle>{t("home.features.cards.6.title")}</CardTitle>
               </CardHeader>
               <CardContent>
-                <p>{t("home.community.features.cards.6.description")}</p>
+                <p>{t("home.features.cards.6.description")}</p>
               </CardContent>
             </Card>
           </div>
@@ -143,14 +145,25 @@ export function WillowsCircleLanding() {
                 {t("home.support.title")}
               </h3>
               <p className="mb-4">{t("home.support.description")}</p>
-              <form className="flex flex-col sm:flex-row gap-4">
+              <form
+                action={formAction}
+                className="flex flex-col sm:flex-row gap-4"
+              >
                 <input
+                  name="email"
                   type="email"
-                  placeholder="Enter your email"
+                  placeholder={t("home.email.title")}
                   className="flex-grow px-3 py-2 border rounded-md"
+                  required
                 />
-                <Button type="submit">{t("home.support.button")}</Button>
+                <SubmitButton />
+                <p aria-live="polite" className="sr-only" role="status">
+                  {state?.message}
+                </p>
               </form>
+              <p aria-live="polite" role="status">
+                {state.message}
+              </p>
             </CardContent>
           </Card>
         </section>

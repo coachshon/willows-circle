@@ -6,10 +6,11 @@ import { cookies, headers } from "next/headers";
 import acceptLanguage from "accept-language";
 
 const cookieName = "i18next";
-// 👇️ Set the accepted languages (from i18n\settings) in the acceptLanguage instance
+
+// Set the accepted languages from i18n\settings in the acceptLanguage instance
 acceptLanguage.languages(languages);
 
-// 👇️ create i18n instance and load locale resource json files
+// Create i18n instance and load locale resource JSON files
 const initI18next = async (lng: string, ns?: string) => {
   const i18nInstance = createInstance();
   await i18nInstance
@@ -24,26 +25,26 @@ const initI18next = async (lng: string, ns?: string) => {
   return i18nInstance;
 };
 
-// 👇️ get lng set in middleware "withResponse" headers and cookies
-export function detectLanguage(): string {
+// Get the language set in the middleware "withResponse" headers and cookies
+export async function detectLanguage(): Promise<string> {
   const cookieStore = cookies();
   const headerStore = headers();
 
-  let lng = acceptLanguage.get(headerStore?.get("content-language"));
-  if (!lng && cookieStore?.has(cookieName)) {
-    lng = cookieStore.get(cookieName)?.value ?? null;
+  let lng = acceptLanguage.get((await headerStore).get("content-language"));
+  if (!lng && (await cookieStore).has(cookieName)) {
+    lng = (await cookieStore).get(cookieName)?.value ?? null;
   }
   if (!lng) lng = fallbackLng;
 
   return lng;
 }
 
-// 👇️ called from server side pages
+// Called from server-side pages
 export async function useTranslation(
   ns?: string,
   options: { keyPrefix?: string } = {}
 ) {
-  const lng = detectLanguage();
+  const lng = await detectLanguage(); // Await detectLanguage call
   const i18nextInstance = await initI18next(lng, ns);
 
   return {
