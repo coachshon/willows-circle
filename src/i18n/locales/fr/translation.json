@@ -1,0 +1,52 @@
+{
+  "home": {
+    "community": {
+      "features": {
+        "cards": {
+          "1": {
+            "description": "Maisons soigneusement conçues disposées pour créer des interactions communautaires naturelles tout en garantissant la confidentialité.",
+            "title": "12 Maisons Réfléchies"
+          },
+          "2": {
+            "description": "Donner 40 acres de terre pour maintenir le système de sentiers existants et la beauté naturelle.",
+            "title": "40 Acres Préservés"
+          },
+          "3": {
+            "description": "Un espace partagé pour les réunions de famille, les événements et favoriser un sentiment de communauté.",
+            "title": "Centre Communautaire"
+          },
+          "4": {
+            "description": "Préserver et améliorer le système de sentiers existants pour la marche, les promenades canines et le plaisir de la nature.",
+            "title": "Sentiers Communautaires"
+          },
+          "5": {
+            "description": "Parfait pour les retraités, les primo-accédants et ceux cherchant un mode de vie connecté.",
+            "title": "Communauté Diversifiée"
+          },
+          "6": {
+            "description": "Offrir une alternative unique à la vie urbaine dense, avec un accent sur la nature et la communauté.",
+            "title": "Qualité de Vie"
+          }
+        },
+        "title": "Caractéristiques de la Communauté"
+      },
+      "neighborhood": {
+        "description": "Le cercle des saules organise les maisons autour d'espaces verts partagés, créant des occasions naturelles de connexions entre voisins tout en maintenant des espaces privés. Cette conception réfléchie favorise un équilibre entre engagement communautaire et retraite personnelle.",
+        "title": "Un Design de Quartier de Proximité"
+      },
+      "vision": {
+        "description": "12 maisons soigneusement conçues sur 1 acre, préservant 40 acres de beauté naturelle pour la communauté.",
+        "title": "Une Nouvelle Vision pour la Vie Communautaire à Saint-Lazare"
+      }
+    },
+    "support": {
+      "button": "Je Soutiens Ce Projet",
+      "description": "Nous croyons que le cercle des saules bénéficiera à notre communauté en offrant des solutions de logement innovantes tout en préservant les espaces naturels. Montrez votre soutien et restez informé de nos progrès :",
+      "title": "Soutenez Notre Vision"
+    }
+  },
+  "html": {
+    "description": "Une Nouvelle Vision pour la Vie Communautaire à Saint-Lazare",
+    "title": "willows circle"
+  }
+}
