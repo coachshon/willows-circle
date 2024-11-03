@@ -46,7 +46,8 @@
     "support": {
       "button": "Je Soutiens Ce Projet",
       "description": "Nous croyons que le cercle des saules bénéficiera à notre communauté en offrant des solutions de logement innovantes tout en préservant les espaces naturels. Montrez votre soutien et restez informé de nos progrès :",
-      "exists": " Merci,",
+      "error": "Oups ! Quelque chose a mal tourné. Veuillez réessayer plus tard.",
+      "exists": "Merci,",
       "thankyou": " Merci pour votre soutien,",
       "title": "Soutenez Notre Vision"
     }

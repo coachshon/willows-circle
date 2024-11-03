@@ -45,6 +45,7 @@
     "support": {
       "button": "I Support This Project",
       "description": "We believe willows circle will benefit our community by providing innovative housing solutions while preserving natural spaces. Show your support and stay updated on our progress:",
+      "error": "Oops! Something went wrong. Please try again later.",
       "exists": "Thank-you,",
       "thankyou": "Thank-you for your support,",
       "title": "Support Our Vision"

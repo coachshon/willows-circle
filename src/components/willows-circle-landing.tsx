@@ -1,8 +1,6 @@
 "use client";
 
-import { useActionState } from "react";
 import { useFormStatus } from "react-dom";
-import { createUser } from "@/actions/createUser";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Home, Trees, Users, Footprints, Building, Heart } from "lucide-react";
@@ -11,11 +9,13 @@ import img from "@/resources/images/sketch.png";
 import { useTranslation } from "@/i18n/client";
 import { LanguageSwitcher } from "@/components/language/switcher";
 
+import { fetchApi } from "@/actions/fetchApi";
+import { useState } from "react";
 function SketchEffect({ children }: { children: React.ReactNode }) {
   return (
     <div className="relative">
       {children}
-      <div className="absolute inset-0 pointer-events-none mix-blend-soft-light bg-[url('/sketch-texture.png')]" />
+      <div className="absolute inset-0 pointer-events-none mix-blend-soft-light]" />
     </div>
   );
 }
@@ -23,6 +23,9 @@ function SketchEffect({ children }: { children: React.ReactNode }) {
 export function WillowsCircleLanding() {
   // 🌍 translations
   const { t } = useTranslation("translation");
+  // Messages
+  const [message, setMessage] = useState("");
+  const [email, setEmail] = useState("");
 
   function SubmitButton() {
     const { pending } = useFormStatus();
@@ -32,10 +35,42 @@ export function WillowsCircleLanding() {
       </Button>
     );
   }
-  const initialState = {
-    message: "",
+  const handleSubmit = async (formData: FormData) => {
+    const email = formData.get("email");
+    const existsMessage = t("home.support.exists");
+    // Check if user with this email already exists
+    const existingUser = await fetchApi(
+      `tables/Users/records?filter={"Email": ["${email}"]}`
+    );
+    if (existingUser.records && existingUser.records.length > 0) {
+      // User with this email already exists
+      setMessage(`${existsMessage} ${email}`);
+      return; // Early return, no need to continue
+    }
+
+    const thankyou = t("home.support.thankyou");
+    // Grist requires `body.records` to be an array of objects
+    const rawFormData = {
+      records: [
+        {
+          fields: {
+            Email: email,
+          },
+        },
+      ],
+    };
+    // mutate data
+    try {
+      await fetchApi("tables/Users/records", "POST", rawFormData);
+      setMessage(`${thankyou} ${email}`);
+      setEmail(""); // Clear email input field
+    } catch (e) {
+      const error = t("home.support.error");
+      setMessage(`${error}`);
+    }
   };
-  const [state, formAction] = useActionState(createUser, initialState);
+
+  //const [state, formAction] = useActionState(createUser, initialState);
   return (
     <div className="min-h-screen bg-background text-foreground">
       <header className="bg-primary text-primary-foreground py-6">
@@ -146,24 +181,22 @@ export function WillowsCircleLanding() {
               </h3>
               <p className="mb-4">{t("home.support.description")}</p>
               <form
-                action={formAction}
+                action={handleSubmit}
                 className="flex flex-col sm:flex-row gap-4"
               >
                 <input
-                  name="email"
                   type="email"
+                  name="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)} // Update email state
+                  required
                   placeholder={t("home.email.title")}
                   className="flex-grow px-3 py-2 border rounded-md"
-                  required
                 />
                 <SubmitButton />
-                <p aria-live="polite" className="sr-only" role="status">
-                  {state?.message}
-                </p>
               </form>
-              <p aria-live="polite" role="status">
-                {state.message}
-              </p>
+              {message && <p>{message}</p>}{" "}
+              {/* Display message conditionally */}
             </CardContent>
           </Card>
         </section>
