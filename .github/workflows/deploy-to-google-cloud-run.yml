@@ -57,7 +57,7 @@ on:
 env:
   PROJECT_ID: ${{ secrets.GCP_PROJECT_ID }}
   RUN_REGION: us-central1
-  SERVICE_NAME: service-willows-circle
+  SERVICE_NAME: service-willows-circle-00001-46p
 
 jobs:
   # Define a job named "setup-build-deploy" that will use ubuntu to deploy and run the step of pipeline
