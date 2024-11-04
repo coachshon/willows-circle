@@ -66,7 +66,7 @@ export function WillowsCircleLanding() {
     <div className="min-h-screen bg-background text-foreground">
       <header className="bg-primary text-primary-foreground py-6">
         <div className="container mx-auto px-4 flex justify-between items-center">
-          <h1 className="text-3xl font-bold">willows circle 🐕 🌳</h1>
+          <h1 className="text-3xl font-bold">willows circle 🦮 🌳</h1>
           <LanguageSwitcher />
         </div>
       </header>
@@ -194,7 +194,7 @@ export function WillowsCircleLanding() {
 
       <footer className="bg-muted py-6">
         <div className="container mx-auto px-4 text-center">
-          <p>willows circle 🐕 🌳 </p>
+          <p>willows circle 🦮 🌳 </p>
         </div>
       </footer>
     </div>
