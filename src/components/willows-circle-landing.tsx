@@ -8,17 +8,8 @@ import Image from "next/image";
 import img from "@/resources/images/sketch.png";
 import { useTranslation } from "@/i18n/client";
 import { LanguageSwitcher } from "@/components/language/switcher";
-
 import { fetchApi } from "@/actions/fetchApi";
 import { useState } from "react";
-function SketchEffect({ children }: { children: React.ReactNode }) {
-  return (
-    <div className="relative">
-      {children}
-      <div className="absolute inset-0 pointer-events-none mix-blend-soft-light]" />
-    </div>
-  );
-}
 
 export function WillowsCircleLanding() {
   // 🌍 translations
@@ -98,16 +89,15 @@ export function WillowsCircleLanding() {
               </h3>
               <p className="mb-4">{t("home.neighborhood.description")}</p>
             </div>
-            <SketchEffect>
-              <div className="relative h-[300px] md:h-[400px]">
-                <Image
-                  src={img}
-                  alt="Architectural sketch of willows circle site plan showing homes arranged around common spaces"
-                  fill
-                  className="rounded-lg object-contain"
-                />
-              </div>
-            </SketchEffect>
+            <div className="relative h-[300px] md:h-[400px]">
+              <Image
+                src={img}
+                alt="Architectural sketch of willows circle site plan showing homes arranged around common spaces"
+                fill
+                sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                className="rounded-lg object-contain"
+              />
+            </div>
           </div>
         </section>
 

@@ -3,6 +3,11 @@ import "./globals.css";
 
 import { languages } from "@/i18n/settings";
 import { useTranslation } from "@/i18n";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  icons: [{ rel: "icon", url: "/favicon.png" }],
+};
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",

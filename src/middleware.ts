@@ -26,7 +26,7 @@ Conditional statements
 */
 export const config = {
   matcher: [
-    "/((?!api|static|_next|data|favicon.ico|sw.js|manifest.json|icons/).*)", // Exclusions
+    "/((?!api|static|_next|data|favicon.png|sw.js|manifest.json|icons/).*)", // Exclusions
     "/src/app/:path*", // Include all routes under src/app folder
   ],
 };
